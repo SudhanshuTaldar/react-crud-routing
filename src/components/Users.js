@@ -1,9 +1,32 @@
-import React from 'react'
-import Header from './Header'
-import { useState, useEffect } from 'react'
-import Axios from 'axios'
+import React from 'react';
+import Header from './Header';
+import { useState, useEffect } from 'react';
+import Axios from 'axios';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 
 function Users() {
+    const schema = yup.object().shape({
+        Name: yup.string().required(),
+        Username: yup.string().required(),
+        Email: yup.string().email().required(),
+        Phone: yup.number().min(10).required(),
+        Website: yup.string().required(),
+        street: yup.string().required(),
+        Suite: yup.string().required(),
+        City: yup.string().required(),
+        Zipcode: yup.number().min(10).required(),
+        Lat: yup.number().min(-180).max(+180).required(),
+        Lng: yup.number().min(-180).max(+180).required(),
+        companyName: yup.string().required(),
+        catchPhrase: yup.string().required(),
+        bs: yup.string().required(),
+    })
+    const { register, handleSubmit, errors } = useForm({
+        resolver: yupResolver(schema),
+    })
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -51,7 +74,7 @@ function Users() {
     }
 
     const submitHandler = (e) => {
-        e.preventDefault()
+        // e.preventDefault();
         if (isEdit) {
             Axios.put(`http://localhost:3001/users/${editId}`, {
                 name: name,
@@ -141,11 +164,10 @@ function Users() {
                     console.log(err)
                 })
         }
-
     }
+
     //delete
     const deleteHandler = (item) => {
-        console.log(item, "s")
         Axios.delete(`http://localhost:3001/users/${item}`)
             .then((res) => {
                 getData();
@@ -154,6 +176,7 @@ function Users() {
                 console.log(err)
             })
     };
+
     //edit//update
     const editHandler = (item) => {
         setName(item.name);
@@ -183,48 +206,61 @@ function Users() {
             <>
                 <Header />
                 <div style={{ textAlign: 'center' }}>
-                    <form onSubmit={submitHandler}>
+                    <form onSubmit={handleSubmit(submitHandler)}>
                         <div className="row">
                             <div className="col-md-4">
                                 <label for="Name">Enter Name:</label><br />
-                                <input type="text" required onChange={(e) => setName(e.target.value)} id="Name" value={name} name="Name" /><br />
+                                <input type="text" onChange={(e) => setName(e.target.value)} id="Name" value={name} name="Name" ref={register}/><br />
+                                <p>{errors.Name?.message}</p>
                                 <label for="Username">Enter Username:</label><br />
-                                <input type="text" required onChange={(e) => setUsername(e.target.value)} id="Username" value={username} name="Username" /><br />
+                                <input type="text" onChange={(e) => setUsername(e.target.value)} id="Username" value={username} name="Username" ref={register}/><br />
+                                <p>{errors.Username?.message}</p>
                                 <label for="Email">Enter Email:</label><br />
-                                <input type="email" required onChange={(e) => setEmail(e.target.value)} id="Email" value={email} name="Email" /><br />
+                                <input type="email" onChange={(e) => setEmail(e.target.value)} id="Email" value={email} name="Email" ref={register}/><br />
+                                <p>{errors.Email?.message}</p>
                                 <label for="phone">Enter Phone:</label><br />
-                                <input type="text" required onChange={(e) => setPhone(e.target.value)} id="Phone" value={phone} name="Phone" /><br />
+                                <input type="text" onChange={(e) => setPhone(e.target.value)} id="Phone" value={phone} name="Phone" ref={register}/><br />
+                                <p>{errors.Phone?.message}</p>
                                 <label for="Website">Enter Website:</label><br />
-                                <input type="text" required onChange={(e) => setWebsite(e.target.value)} id="Website" value={website} name="Website" /><br />
+                                <input type="text" onChange={(e) => setWebsite(e.target.value)} id="Website" value={website} name="Website" ref={register}/><br />
+                                <p>{errors.Website?.message}</p>
                             </div>
 
                             <div className="col-md-4">
                                 <h5>Enter Address</h5>
                                 <label for="street">Enter Street:</label><br />
-                                <input type="text" required onChange={(e) => setStreet(e.target.value)} id="street" value={street} name="street" /><br />
+                                <input type="text" onChange={(e) => setStreet(e.target.value)} id="street" value={street} name="street" ref={register}/><br />
+                                <p>{errors.street?.message}</p>
                                 <label for="Suite">Enter Suite:</label><br />
-                                <input type="text" required onChange={(e) => setSuite(e.target.value)} id="Suite" value={suite} name="Suite" /><br />
+                                <input type="text" onChange={(e) => setSuite(e.target.value)} id="Suite" value={suite} name="Suite" ref={register}/><br />
+                                <p>{errors.Suite?.message}</p>
                                 <label for="City">Enter City:</label><br />
-                                <input type="text" required onChange={(e) => setCity(e.target.value)} id="City" value={city} name="City" /><br />
+                                <input type="text" onChange={(e) => setCity(e.target.value)} id="City" value={city} name="City" ref={register}/><br />
+                                <p>{errors.City?.message}</p>
                                 <label for="Zipcode">Enter Zipcode:</label><br />
-                                <input type="text" required onChange={(e) => setZipcode(e.target.value)} id="Zipcode" value={zipcode} name="Zipcode" /><br />
-
+                                <input type="text" onChange={(e) => setZipcode(e.target.value)} id="Zipcode" value={zipcode} name="Zipcode" ref={register}/><br />
+                                <p>{errors.Zipcode?.message}</p>
                                 <div>
                                     <h5>Enter Geo</h5>
                                     <label for="Lat">Enter Lat:</label><br />
-                                    <input type="text" required onChange={(e) => setLat(e.target.value)} id="Lat" value={lat} name="Lat" /><br />
+                                    <input type="text" onChange={(e) => setLat(e.target.value)} id="Lat" value={lat} name="Lat" ref={register}/><br />
+                                    <p>{errors.Lat?.message}</p>
                                     <label for="Lng">Enter Lng:</label><br />
-                                    <input type="text" required onChange={(e) => setLng(e.target.value)} id="Lng" value={lng} name="Lng" /><br />
+                                    <input type="text" onChange={(e) => setLng(e.target.value)} id="Lng" value={lng} name="Lng" ref={register}/><br />
+                                    <p>{errors.Lng?.message}</p>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <h5>Enter Company Name</h5>
                                 <label for="companyName">Enter companyName:</label><br />
-                                <input type="text" required onChange={(e) => setCompanyName(e.target.value)} id="companyName" value={companyName} name="companyName" /><br />
+                                <input type="text" onChange={(e) => setCompanyName(e.target.value)} id="companyName" value={companyName} name="companyName" ref={register}/><br />
+                                <p>{errors.companyName?.message}</p>
                                 <label for="catchPhrase">Enter CatchPhrase:</label><br />
-                                <input type="text" required onChange={(e) => setCatchPhrase(e.target.value)} id="catchPhrase" value={catchPhrase} name="catchPhrase" /><br />
+                                <input type="text" onChange={(e) => setCatchPhrase(e.target.value)} id="catchPhrase" value={catchPhrase} name="catchPhrase" ref={register}/><br />
+                                <p>{errors.catchPhrase?.message}</p>
                                 <label for="bs">Enter Bs:</label><br />
-                                <input type="text" required onChange={(e) => setBs(e.target.value)} id="bs" value={bs} name="bs" /><br />
+                                <input type="text" onChange={(e) => setBs(e.target.value)} id="bs" value={bs} name="bs" ref={register}/><br />
+                                <p>{errors.bs?.message}</p>
                             </div>
                         </div>
                         {
@@ -241,7 +277,7 @@ function Users() {
                         return (
                             <li key={item.id}>
                                 <ul>
-                                    <li>ID: {index+1}</li>
+                                    <li>ID: {index + 1}</li>
                                     <li>Name: {item.name}</li>
                                     <li>Email: {item.email}</li>
                                     <li>Username: {item.username}</li>
