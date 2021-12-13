@@ -11,10 +11,19 @@ function Header() {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
+                            <a class="nav-link" href="/posts">Posts</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/users">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/posts">Posts</a>
+                            <a class="nav-link" href="/file_upload">Avatar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/postreducer">postReducer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/userreducer">userReducer</a>
                         </li>
                     </ul>
                 </div>

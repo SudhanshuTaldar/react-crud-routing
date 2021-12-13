@@ -54,6 +54,7 @@ function Posts() {
                         console.log(err)
                     })
             } else {
+                console.log(title,body)
                 Axios.post("http://localhost:3001/posts", {
                     title: title,
                     body: body
