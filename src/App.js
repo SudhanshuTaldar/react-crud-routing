@@ -7,6 +7,7 @@ import FileUpload from "./components/FileUpload";
 import Result from "./components/Result";
 import PostReducer from "./components/PostReducer";
 import UserReducer from "./components/UserReducer";
+import CounterRedux from "./components/CounterRedux";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/result" element={<Result />} />
           <Route path="/postreducer" element={<PostReducer />} />
           <Route path="/userreducer" element={<UserReducer />} />
+          <Route path="/counter" element={<CounterRedux />} />
         </Routes>
       </Router>
     </>

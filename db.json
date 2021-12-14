@@ -44,6 +44,37 @@
         "bs": "dfsgfdgfd"
       },
       "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "data": {
+        "state": {
+          "data": null,
+          "avr": {
+            "source": "blob:http://localhost:3000/28c7d5e1-cd78-4ebb-bf6f-423ff84f5aff",
+            "name": "trash-alt-regular.svg",
+            "size": 739,
+            "file": {}
+          }
+        }
+      },
+      "id": 3
+    },
+    {
+      "data": {
+        "state": {
+          "data": null,
+          "avr": {
+            "source": "blob:http://localhost:3000/28c7d5e1-cd78-4ebb-bf6f-423ff84f5aff",
+            "name": "trash-alt-regular.svg",
+            "size": 739,
+            "file": {}
+          }
+        }
+      },
+      "id": 4
     }
   ]
 }

@@ -25,6 +25,9 @@ function Header() {
                         <li class="nav-item">
                             <a class="nav-link" href="/userreducer">userReducer</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/counter">Counter[Redux]</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -48,8 +48,6 @@ function UserReducer() {
                 console.log(res.data, "ll")
             })
             return state
-
-
         }
         else return state
     }
