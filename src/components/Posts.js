@@ -146,8 +146,8 @@ function Posts() {
                                     <li>ID :- {index + 1}</li>
                                     <li>TITLE :- {item.title}</li>
                                     <li>DESCRIPTION :- {item.body}</li>
-                                    <button onClick={() => { deleteHandler(item.id) }} ><i class="material-icons">delete</i></button>
-                                    <button onClick={() => { editHandler(item) }}><i class="material-icons">EDIT</i></button>
+                                    <button onClick={() => { deleteHandler(item.id) }} ><i className="material-icons">delete</i></button>
+                                    <button onClick={() => { editHandler(item) }}><i className="material-icons">EDIT</i></button>
                                 </ul>
                             </li>
                         )

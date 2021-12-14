@@ -7,7 +7,7 @@ export const increment = (data) => {
 export const decrement = (data) => {
     return {
         type: "DECREMENT",
-        payload:+data
+        payload:data
     };
 };
 export const reset = () => {
@@ -18,7 +18,7 @@ export const reset = () => {
 export const getValue = (data) => {
     return {
         type: "GET_VALUE",
-        payload:+data
+        payload:data
     };
 };
 export const incrementByIp = (data) => {
@@ -30,6 +30,6 @@ export const incrementByIp = (data) => {
 export const decrementByIp = (data) => {
     return {
         type: "DECREMENT_BY_IP",
-        payload:+data
+        payload:data
     };
 };
