@@ -87,6 +87,8 @@ function PostReducer() {
     }
     const submitHandler = async () => {
         if (isEdit) {
+
+            
             Axios.put(`http://localhost:3001/posts/${data.id}`, {
                 title: data.title,
                 body: data.body

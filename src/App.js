@@ -8,6 +8,7 @@ import Result from "./components/Result";
 import PostReducer from "./components/PostReducer";
 import UserReducer from "./components/UserReducer";
 import CounterRedux from "./components/CounterRedux";
+import CounterUseReducer from "./components/CounterUseReducer";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/postreducer" element={<PostReducer />} />
           <Route path="/userreducer" element={<UserReducer />} />
           <Route path="/counter" element={<CounterRedux />} />
+          <Route path="/reducer_counter" element={<CounterUseReducer />} />
         </Routes>
       </Router>
     </>

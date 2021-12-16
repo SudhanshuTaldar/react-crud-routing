@@ -28,6 +28,9 @@ function Header() {
                         <li className="nav-item">
                             <a className="nav-link" href="/counter">Counter[Redux]</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/reducer_counter">Counter[UseReducer]</a>
+                        </li>
                     </ul>
                 </div>
             </div>
