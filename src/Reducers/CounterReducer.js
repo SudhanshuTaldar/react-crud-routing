@@ -19,7 +19,7 @@ const CounterReducer = (state = init, action) => {
         case "GET_VALUE":
             return {
                 ...state,
-                Data: action.value
+                Data: action.payload
             };
         case "INCREMENT_BY_IP":
             return {

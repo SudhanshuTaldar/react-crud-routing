@@ -12,10 +12,10 @@ export function* decrementAsync() {
 export function* getValue(action) {
     if (action.payload < 0 ||isNaN(action.payload) === true) {
         console.log(action.payload, "abc")
-        yield put({ type: "GET_VALUE", value: 1 });
+        yield put({ type: "GET_VALUE", payload: 1 });
     } else {
         console.log(action.payload, "number")
-        yield put({ type: "GET_VALUE", value: action.payload });
+        yield put({ type: "GET_VALUE", payload: action.payload });
     }
 }
 export default function* rootSaga() {
