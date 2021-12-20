@@ -1,13 +1,11 @@
-export const increment = (data) => {
+export const increment = () => {
     return {
-        type: "INCREMENT",
-        payload:+data
+        type: "INCREMENT"
     };
 };
-export const decrement = (data) => {
+export const decrement = () => {
     return {
-        type: "DECREMENT",
-        payload:data
+        type: "DECREMENT"
     };
 };
 export const reset = () => {
@@ -18,18 +16,32 @@ export const reset = () => {
 export const getValue = (data) => {
     return {
         type: "GET_VALUE",
-        payload:data
+        payload: data
     };
 };
 export const incrementByIp = (data) => {
+    console.log(data)
     return {
         type: "INCREMENT_BY_IP",
-        payload:+data
+        payload: data
     };
 };
 export const decrementByIp = (data) => {
     return {
         type: "DECREMENT_BY_IP",
-        payload:data
+        payload: data
+    };
+};
+export const ValidateInput = (data) => {
+    return { type: "VALIDATE_IP", payload: data };
+};
+export const incrementAsync = () => {
+    return {
+        type: "INCREMENT_ASYNC"
+    };
+};
+export const decrementAsync = () => {
+    return {
+        type: "DECREMENT_ASYNC"
     };
 };

@@ -7,16 +7,9 @@ const CounterReducer = (state = init, action) => {
                 counter: state.counter + 1
             }
         case "DECREMENT":
-            if (state.counter === 0)
-                return {
-                    ...state,
-                    counter: state.counter = 0
-                }
-            else {
-                return {
-                    ...state,
-                    counter: state.counter - 1
-                }
+            return {
+                ...state,
+                counter: state.counter - 1
             }
         case "RESET":
             return {
@@ -26,26 +19,19 @@ const CounterReducer = (state = init, action) => {
         case "GET_VALUE":
             return {
                 ...state,
-                Data: action.payload
+                Data: action.value
             };
         case "INCREMENT_BY_IP":
             return {
                 ...state,
-                counter: state.counter + action.payload
+                counter: Number(state.counter) + Number(+action.payload)
             }
         case "DECREMENT_BY_IP":
-            if (state.counter === 0) {
                 return {
                     ...state,
-                    counter: state.counter = 0
+                    counter: Number(state.counter) - Number(+action.payload)
                 }
-            }
-            else {
-                return {
-                    ...state,
-                    counter: state.counter - action.payload
-                }
-            }
+            
         default:
             return state
     }
